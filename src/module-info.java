@@ -5,4 +5,5 @@
  * 
  */
 module TestUnitaire {
+	requires junit;
 }
