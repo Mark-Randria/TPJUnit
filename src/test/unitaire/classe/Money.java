@@ -17,12 +17,6 @@ public class Money implements IMoney {
 		return fCurrency;
 	}
 	
-	public Money add(Money m) {
-		if (m.currency().equals(currency()))
-			return new Money(amount() + m.amount(), currency());
-		return new MoneyBag(this, m);
-	}
-	
 	@Override
 	public boolean equals(Object compare) {
 		if (this == compare) return true;
@@ -30,5 +24,28 @@ public class Money implements IMoney {
 		Money money = (Money) compare;
 		return fAmount == money.fAmount && fCurrency.equals(money.fCurrency);
 		
+	}
+
+	@Override
+	public IMoney add(IMoney m) {
+		// TODO Auto-generated method stub
+		return m.addMoney(this);
+	}
+
+	@Override
+	public IMoney addMoney(Money m) {
+		// TODO Auto-generated method stub
+		if (m.currency().equals(currency())) {
+			return new Money(amount() + m.amount(), currency());
+		} else {
+			return new MoneyBag(this, m);
+		}
+	}
+
+	@Override
+	public IMoney addMoneyBag(MoneyBag m) {
+		// TODO Auto-generated method stub
+		MoneyBag moneyBag = new MoneyBag(this);
+		return moneyBag.add(m);
 	}
 }
