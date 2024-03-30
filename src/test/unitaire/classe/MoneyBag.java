@@ -3,7 +3,7 @@ package test.unitaire.classe;
 import java.util.Objects;
 import java.util.Vector;
 
-public class MoneyBag {
+public class MoneyBag implements IMoney {
 	private Vector<Money> fMonies = new Vector<Money>();
 
 	MoneyBag(Money m1, Money m2) {
