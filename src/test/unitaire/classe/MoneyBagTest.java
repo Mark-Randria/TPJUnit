@@ -25,6 +25,7 @@ public class MoneyBagTest {
 		
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	public void testBagEquals() {
 		assertTrue(!fMB1.equals(null));
@@ -32,6 +33,13 @@ public class MoneyBagTest {
 		assertTrue(!fMB1.equals(f12CHF));
 		assertTrue(!f12CHF.equals(fMB1));
 		assertTrue(!fMB1.equals(fMB2));
+	}
+	
+	@Test
+	public void TestMixedSimpleAdd() {
+		Money bag[] = {f12CHF, f7USD };
+		MoneyBag expected = new MoneyBag(bag);
+		assertEquals(expected, f12CHF.add(f7USD));
 	}
 
 }
