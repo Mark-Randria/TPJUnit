@@ -1,5 +1,7 @@
 package test.unitaire.classe;
 
+import java.util.Vector;
+
 public class Money implements IMoney {
 	private int fAmount;
 	private String fCurrency;
@@ -22,14 +24,15 @@ public class Money implements IMoney {
 		if (this == compare) return true;
 		if (compare == null || getClass() != compare.getClass()) return false;
 		Money money = (Money) compare;
-		return fAmount == money.fAmount && fCurrency.equals(money.fCurrency);
-		
+		return fAmount == money.fAmount && fCurrency.equals(money.fCurrency);	
 	}
 
 	@Override
 	public IMoney add(IMoney m) {
 		// TODO Auto-generated method stub
-		return m.addMoney(this);
+		if (m instanceof Money)
+			return m.addMoney(this);
+		return m.addMoneyBag((MoneyBag) m);
 	}
 
 	@Override
@@ -45,7 +48,13 @@ public class Money implements IMoney {
 	@Override
 	public IMoney addMoneyBag(MoneyBag m) {
 		// TODO Auto-generated method stub
-		MoneyBag moneyBag = new MoneyBag(this);
-		return moneyBag.add(m);
+		
+		Vector<Money> MergedMoney = new Vector<Money>(); 
+		
+		MergedMoney.add(this);
+		
+		MergedMoney.addAll(m.getMoneyBagVal());
+		return new MoneyBag(MergedMoney);
+		
 	}
 }
