@@ -49,7 +49,7 @@ public class MoneyBagTest {
 	    Money expected[] = {f12CHF, f7USD};
 	    MoneyBag expectedBag = new MoneyBag(expected);
 	    
-	    assertEquals(expectedBag, f12CHF.add(fMB1));
+	    assertEquals(expectedBag, f12CHF.add(new Money(7, "USD")));
 	}
 
 	@Test

@@ -88,7 +88,6 @@ public class MoneyBag implements IMoney {
 	@Override
 	public IMoney addMoney(Money m) {
 		// TODO Auto-generated method stub
-//		MoneyBag moneyBag = new MoneyBag(this);
 		return m.add(this);
 	}
 

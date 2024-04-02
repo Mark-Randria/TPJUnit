@@ -1,6 +1,5 @@
 package test.unitaire.classe;
 
-import java.util.Vector;
 
 public class Money implements IMoney {
 	private int fAmount;
