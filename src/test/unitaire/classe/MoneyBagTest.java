@@ -48,8 +48,9 @@ public class MoneyBagTest {
 	    // [12 CHF] + {[7 USD]} == {[12 CHF][7 USD]}
 	    Money expected[] = {f12CHF, f7USD};
 	    MoneyBag expectedBag = new MoneyBag(expected);
+	    MoneyBag fMB3 = new MoneyBag(new Money(7, "USD"));
 	    
-	    assertEquals(expectedBag, f12CHF.add(new Money(7, "USD")));
+	    assertEquals(expectedBag, f12CHF.add(fMB3));
 	}
 
 	@Test
