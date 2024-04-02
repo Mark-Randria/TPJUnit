@@ -31,8 +31,8 @@ public class Money implements IMoney {
 	public IMoney add(IMoney m) {
 		// TODO Auto-generated method stub
 		if (m instanceof Money)
-			return m.addMoney(this);
-		return m.addMoneyBag((MoneyBag) m);
+			return addMoney((Money) m);
+		return addMoneyBag((MoneyBag) m);
 	}
 
 	@Override

@@ -13,12 +13,16 @@ public class MoneyBag implements IMoney {
 	}
 	
 	MoneyBag(Money m1, Money m2) {
-		appendMoney(m2);
 		appendMoney(m1);
-
+		appendMoney(m2);
 	}
 	
 	MoneyBag(Money m1, MoneyBag m2) {
+		appendMoney(m1);
+		appendMoney(m2);
+	}
+	
+	MoneyBag(MoneyBag m1, MoneyBag m2) {
 		appendMoney(m1);
 		appendMoney(m2);
 	}
@@ -33,10 +37,6 @@ public class MoneyBag implements IMoney {
 		for (Money obj : bag) {
 			appendMoney(obj);
 		}
-	}
-
-	public Vector<Money> getMoneyBagVal() {
-		return fMonies;
 	}
 	
 	private void appendMoney(Money m) {
@@ -80,19 +80,21 @@ public class MoneyBag implements IMoney {
 	@Override
 	public IMoney add(IMoney m) {
 		// TODO Auto-generated method stub
-		return m.addMoneyBag(this);
+		if (m instanceof Money)
+			return addMoney((Money) m);
+		return addMoneyBag((MoneyBag) m);
 	}
 
 	@Override
 	public IMoney addMoney(Money m) {
 		// TODO Auto-generated method stub
-		MoneyBag moneyBag = new MoneyBag(this);
-		return moneyBag.add(m);
+//		MoneyBag moneyBag = new MoneyBag(this);
+		return m.add(this);
 	}
 
 	@Override
 	public IMoney addMoneyBag(MoneyBag m) {
 		// TODO Auto-generated method stub
-		return null;
+		return new MoneyBag(this, m);
 	}
 }

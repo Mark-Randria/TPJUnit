@@ -39,7 +39,7 @@ public class MoneyBagTest {
 	public void TestMixedSimpleAdd() {
 		// [12 CHF] + [7 USD] = {[12CHF][7USD]}
 		Money bag[] = { f12CHF, f7USD };
-		IMoney expected = new MoneyBag(bag);
+		MoneyBag expected = new MoneyBag(bag);
 		assertEquals(expected, f12CHF.add(f7USD));
 	}
 	
