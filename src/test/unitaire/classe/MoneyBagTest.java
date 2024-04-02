@@ -69,5 +69,14 @@ public class MoneyBagTest {
 	    
 	    assertEquals(expectedBag, fMB1.add(fMB2));
 	}
+	
+	@Test
+	public void testRemoveMoney() {
+	    // [-12 CHF] + {[12 CHF][7 USD]} == [7 USD]
+	    Money expected[] = { f7USD };
+	    MoneyBag expectedBag = new MoneyBag(expected);
+	    
+	    assertEquals(expectedBag, fMB1.add(new Money(-12, "CHF")));
+	}
 
 }

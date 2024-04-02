@@ -50,8 +50,12 @@ public class MoneyBag implements IMoney {
 			if (i >= fMonies.size()) {
 				fMonies.add(m);
 			} else {
-				fMonies.set(i, new Money(fMonies.get(i)
-						.amount() + m.amount(), m.currency()));
+				Money currentMoney = fMonies.get(i);
+				int newAmount = currentMoney.amount() + m.amount();
+				if (newAmount == 0)
+					fMonies.remove(i);
+				else
+					fMonies.set(i, new Money(newAmount, m.currency()));
 			}
 		}
 	}
