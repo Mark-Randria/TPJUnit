@@ -72,6 +72,13 @@ public class MoneyBag implements IMoney {
 		}
 	}
 
+	public Money simplifyMoneyBag() {
+		if (fMonies.size() == 1) {
+			return fMonies.get(0);
+		}
+		throw new IllegalStateException("MoneyBag contenant plusieurs Money, conversion impossible");
+	}
+	
 	@Override
 	public boolean equals(Object compare) {
 		if (this == compare) return true;

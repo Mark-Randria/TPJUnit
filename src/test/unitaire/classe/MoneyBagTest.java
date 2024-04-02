@@ -72,11 +72,27 @@ public class MoneyBagTest {
 	
 	@Test
 	public void testRemoveMoney() {
-	    // [-12 CHF] + {[12 CHF][7 USD]} == [7 USD]
+	    // [-12 CHF] + {[12 CHF][7 USD]} == {[7 USD]}
 	    Money expected[] = { f7USD };
 	    MoneyBag expectedBag = new MoneyBag(expected);
 	    
 	    assertEquals(expectedBag, fMB1.add(new Money(-12, "CHF")));
+	}
+	
+	@Test
+	public void testSimplifyMoneyBag() {
+		// [-14 CHF] + {[14 CHF][21USD]} == [21 USD]
+		Money expected = f21USD;
+		Money f_14CHF = new Money(-14, "CHF");
+		
+		MoneyBag result = (MoneyBag) fMB2.add(f_14CHF);
+		assertEquals(expected, result.simplifyMoneyBag());
+	}
+	
+	@Test (expected = IllegalStateException.class)
+	public void testSimplifyMoneyBagMultipleValues() {
+		// conversion de fMB2 en Money impossible
+		fMB2.simplifyMoneyBag();
 	}
 
 }
