@@ -49,12 +49,6 @@ public class Money implements IMoney {
 	public IMoney addMoneyBag(MoneyBag m) {
 		// TODO Auto-generated method stub
 		
-		Vector<Money> MergedMoney = new Vector<Money>(); 
-		
-		MergedMoney.add(this);
-		
-		MergedMoney.addAll(m.getMoneyBagVal());
-		return new MoneyBag(MergedMoney);
-		
+		return new MoneyBag(this, m);
 	}
 }

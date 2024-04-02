@@ -6,9 +6,7 @@ import java.util.Vector;
 public class MoneyBag implements IMoney {
 	private Vector<Money> fMonies = new Vector<Money>();
 	
-	public MoneyBag(Vector<Money> f) {
-		this.fMonies = new Vector<>(f);
-	}
+	
 	
 	public MoneyBag(Money m) {
 		appendMoney(m);
@@ -20,10 +18,9 @@ public class MoneyBag implements IMoney {
 
 	}
 	
-	MoneyBag(IMoney m1, IMoney m2) {
-		appendMoney(m2);
+	MoneyBag(Money m1, MoneyBag m2) {
 		appendMoney(m1);
-
+		appendMoney(m2);
 	}
 	
 	MoneyBag(MoneyBag mb) {
